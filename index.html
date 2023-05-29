@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>View Profile Page</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="jquery-3.6.4.js"></script>
+    <script src="script.js"></script>
+</head>
+
+<body >
+  
+    <div id="divbody">
+        <div class="container">
+            <div id="icons-top" >
+                <div class="dropdown" style="float:right">
+                    <button class="dropdown-button" type="button" style="background-color: transparent; margin-right: 10px">
+                        <i class="fas fa-ellipsis-v" style="margin-right: 10px; margin-top: 5px; font-size: 25px"></i>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Option 1</a></li>
+                        <li><a href="#">Option 2</a></li>
+                        <li><a href="#">Option 3</a>></li>
+                    </ul>
+                </div>
+                <button class="back-button" type=button style="background-color:transparent; margin-left: 10px;">
+                    <i class="fa fa-chevron-left" style="margin-left: 10px; margin-top: 5px; font-size : 25px"></i>
+                </button>
+            </div>
+            <div id="profile-picture-container" class="profile-picture">
+                <img id="profile-picture" src="Love.jpeg" alt="your Profile Picture">
+                <input type="file" id="profile-picture-input">
+            </div>
+            <div class="field-container">
+                <label class="form-label" for="name">
+                    &#x1F464 Name</label>
+                <input type="text" class="user-input" readonly="" placeholder="Name">
+                <i id="edit-icon1" class="fas fa-pencil-alt edit-icons" style="display: none;"></i>
+            </div>
+            <div class="field-container">
+                <label class="form-label" for="name">
+                    &#x1F194 Username</label>
+                <input type="text" class="user-input" readonly=""  placeholder="Username">
+                <i id="edit-icon2" class="fas fa-pencil-alt edit-icons" style="display: none;"></i>
+            </div>
+            <div class="field-container" >
+                <label class="form-label" for="Number">
+                    &#x1F4DE Phone Number</label>
+                    <input type="tel" class="user-input" readonly="" placeholder="Contact">
+                    <i  id="edit-icon3" class="fas fa-pencil-alt edit-icons" style="display: none;"></i>
+            </div>
+            <div class="field-container">
+                <label class="form-label" for="age">
+                    &#x1F5D3 Age</label>
+                    <input class="user-input" type="date" readonly="">
+                </div>
+            <div class="field-container">
+                <label class="form-label" for="Bio">
+                     &#x1F4DD Bio</label>
+                    <input type="text" class="user-input" readonly="" placeholder="About me">
+                    <i id="edit-icon4" class="fas fa-pencil-alt edit-icons" style="display: none;"></i></div>
+            <div style="margin-left:auto;">
+                <button class="btn btn-primary edit-button" type="button" 
+                    style="padding: 5px 10px;background-color: transparent;border:1px solid #ffd3a5;color: initial;">
+                    Edit Profile &#x270F
+                </button>
+                <button class="btn btn-primary save-button" type="button"
+                    style="padding: 5px 10px;background-color: transparent;border: 1px solid #ffd3a5;color: initial;display:none;">
+                    Save &#x2713
+                </button>
+            </div>
+        </div>
+    </div>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>
