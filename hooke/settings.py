@@ -77,10 +77,20 @@ WSGI_APPLICATION = 'hooke.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': BASE_DIR / 'db.sqlite3',
+    # }
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'railway',
+        'USER': 'postgres',
+        'PASSWORD': 'YdIwq8KraXgHMmYY4QTk',
+        'HOST': 'containers-us-west-77.railway.app',
+        'PORT': '6851',
+
     }
+
 }
 
 
