@@ -3,28 +3,68 @@
 {% block content %}
   <nav>
     <div class="px-2 py-2 primary-bg fixed-top" id="header">
-      <button class="btn on-surface-text"><i class="fa-solid fa-circle-user fa-lg"></i> Me</b>
-      <button class="btn on-surface-text" id="toggle-theme" style="float: right;"><i class="fa-solid fa-moon fa-lg"></i> Toggle theme</button>
+      <a href="javascript:history.go(-1)" class="btn on-surface-text"><i class="fa-solid fa-arrow-left fa-lg"></i> Profile</a>
+      <button class="btn on-surface-text"  style="float: right;"><a class="unstyled" href="{% url 'home:theme-swap' %}"><i class="fa-solid fa-moon fa-lg"></i> Toggle theme</a></button>
     </div>
   </nav>
 
     <main>
       <br>
         
-        <section class="main-section container">
-          <div class="card card-1 surface surface-border">
-            <div class="card-body">
-              <div class="image" style="background-image: url('{{ hookie.profile_photo.url }}');"></div>
+        <section class="main-section container-profile surface surface-border on-surface-heading">
+            <div class="image profile-picture" style="background-image: url('{{ hookie.profile_photo.url }}');"></div>
               <h5 class="on-surface-heading">{{ hookie.first_name }} {{ hookie.last_name }}</h5>
-              <p class="on-surface-text">{{ hookie.bio }}</p>
+              <p class="on-surface-text px-3" style="text-align:center">{{ hookie.bio }}</p>
               <p style="text-align:center">
-                <button class="btn secondary-color"><i class="fa-regular fa-heart"></i> Interested</button>
-                <button class="btn on-surface-text"><i class="fa-solid fa-circle-info"></i> View profile</button>
-
+                <a href="{% url 'home:interested' slug=hookie.owner.id %}" class="btn secondary-color"><i class="fa-regular fa-heart"></i> Interested</a>
               </p>
-              
+       
+        <div class="field-container " >
+            <label class="form-label " for="Number">
+                &#x1F4DE Phone Number:</label>
+                <input type="tel" class="user-input on-surface-heading" readonly="" value="{{ hookie.phone_number }}"  placeholder="Contact">
+                <i  id="edit-icon3" class="fas fa-pencil-alt edit-icons" style="display: none;"></i>
+        </div>
+        <div class="field-container">
+            <label class="form-label" for="age">
+                &#x1F5D3 Date of birth: </label>
+                <input class="user-input on-surface-heading" type="text" value="{{ hookie.date_of_birth }}" readonly="">
             </div>
-          </div>
+        <div class="field-container">
+            <label class="form-label" for="Bio">
+                 &#x1F4DD Nationality: </label>
+                <input type="text" class="user-input on-surface-heading" readonly="" value="{{ hookie.nationality }}" placeholder="About me">
+                <i id="edit-icon4" class="fas fa-pencil-alt edit-icons" style="display: none;"></i>
+        </div>
+        <div class="field-container">
+            <label class="form-label" for="Bio">
+                 &#x1F4DD Hostel: </label>
+                <input type="text" class="user-input on-surface-heading" readonly="" value="{{ hookie.hostel }}" placeholder="About me">
+                <i id="edit-icon4" class="fas fa-pencil-alt edit-icons" style="display: none;"></i>
+        </div>
+        <div class="field-container">
+            <label class="form-label" for="Bio">
+                 &#x1F4DD School: </label>
+                <input type="text" class="user-input on-surface-heading" readonly="" value="{{ hookie.school }}" placeholder="About me">
+                <i id="edit-icon4" class="fas fa-pencil-alt edit-icons" style="display: none;"></i>
+        </div>
+        <div class="field-container">
+            <label class="form-label" for="Bio">
+                 &#x1F4DD Program of study: </label>
+                <input type="text" class="user-input on-surface-heading" readonly="" value="{{ hookie.program }}" placeholder="About me">
+                <i id="edit-icon4" class="fas fa-pencil-alt edit-icons" style="display: none;"></i>
+        </div>
+        {% comment %} <div style="margin-left:auto;">
+            <button class="btn btn-primary edit-button" type="button" 
+                style="padding: 5px 10px;background-color: transparent;border:1px solid #ffd3a5;color: initial;">
+                Edit Profile &#x270F
+            </button>
+            <button class="btn btn-primary save-button" type="button"
+                style="padding: 5px 10px;background-color: transparent;border: 1px solid #ffd3a5;color: initial;display:none;">
+                Save &#x2713
+            </button>
+        </div> {% endcomment %}
+      
             
         </section>
         <br>

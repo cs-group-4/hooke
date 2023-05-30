@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 @login_required()
-def inbox (request, user_id):
+def inbox_message (request, user_id):
     gotten = Inbox.objects.filter((Q(user1_id=user_id,user2=request.user) | Q(user2_id=user_id,user1=request.user)))
     inbox = None
     chatting_with = User.objects.get(pk=user_id)
@@ -27,11 +27,9 @@ def inbox (request, user_id):
 
 @login_required()
 def inbox (request):
-    gotten = Inbox.objects.filter((Q(user2=request.user) | Q(user1=request.user)))
-    params = {
-    "users": User.objects.exclude(id=request.user.id)
-    }
-    return render(request, 'chat/inbox.html', params)
+    contacts = Inbox.objects.filter((Q(user1=request.user)))
+  
+    return render(request, 'chat/contacts.html', {'contacts':contacts})
 
 @login_required()
 def view_chats(request):

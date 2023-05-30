@@ -3,41 +3,41 @@ from django.contrib.auth.models import User
 # Create your models here.
 class Profile(models.Model):
   nationalities = [
-    ('Za', 'Zambian'),
-    ('MA', 'Malawian'),
-    ('So', 'South African'),
-    ('Zi', 'Zimbabwean'),
-    ('Co', 'Congolis'),
-    ('In', 'Indian'),
-    ('Ch', 'Chinese'),
-    ('Mo', 'Moroccan'),
-    ('Bo', 'Botswanan'),
-    ('Ni', 'Nigerian'),
+    ('Zambian', 'Zambian'),
+    ('Malawian', 'Malawian'),
+    ('South African', 'South African'),
+    ('Zimbabwean', 'Zimbabwean'),
+    ('Congolis', 'Congolis'),
+    ('Indian', 'Indian'),
+    ('Chinese', 'Chinese'),
+    ('Moroccan', 'Moroccan'),
+    ('Botswanan', 'Botswanan'),
+    ('Nigerian', 'Nigerian'),
   ]
   hostels = [
-    ('Ka', 'Kalingalinga'),
-    ('Ti', 'Tiyende Pamodzi'),
-    ('So', 'Soweto'),
-    ('Ka', 'Kafue'),
-    ('Oc', 'October'),
-    ('Za', 'Zambezi'),
-    ('In', 'International'),
-    ('Pr', 'President'),
-    ('Kw', 'Kwacha'),
-    ('Af', 'Africa'),
-    ('VE', 'VET'),
-    ('Le', 'Levy Mwanawasa'),
+    ('Kalingalinga', 'Kalingalinga'),
+    ('Tiyende Pamodzi', 'Tiyende Pamodzi'),
+    ('Soweto', 'Soweto'),
+    ('Kafue', 'Kafue'),
+    ('October', 'October'),
+    ('Zambezi', 'Zambezi'),
+    ('International', 'International'),
+    ('President', 'President'),
+    ('Kwacha', 'Kwacha'),
+    ('Africa', 'Africa'),
+    ('VET', 'VET'),
+    ('Levy Mwanawas', 'Levy Mwanawasa'),
   ]
   schools = [
-    ('Na', 'Natural Sciences'),
-    ('Ag', 'Agricultural Sciences'),
-    ('Mi', 'Mines'),
-    ('Ed', 'Education'),
-    ('Hu', 'Humaninities and Social Sciences'),
-    ('En', 'Engineering'),
-    ('Ve', 'Vetnery Medicine'),
-    ('Co', 'Confucius Studies'),
-    ('La', 'Law'),
+    ('Natural Sciences', 'Natural Sciences'),
+    ('Agricultural Sciences', 'Agricultural Sciences'),
+    ('Mines', 'Mines'),
+    ('Education', 'Education'),
+    ('Humaninities and Social Sciences', 'Humaninities and Social Sciences'),
+    ('Engineering', 'Engineering'),
+    ('Vetnery Medicine', 'Vetnery Medicine'),
+    ('Confucius Studies', 'Confucius Studies'),
+    ('Law', 'Law'),
   ]
   first_name = models.CharField(max_length=50)
   last_name = models.CharField(max_length=50)
@@ -45,9 +45,9 @@ class Profile(models.Model):
   bio = models.CharField(max_length=150, help_text="Enter a brief description of yourself", null=True)
   # gender
   date_of_birth = models.DateField()
-  nationality = models.CharField(max_length=2, choices=nationalities, default="Za")
-  hostel = models.CharField(max_length=2, choices=hostels, default="Ka")
-  school = models.CharField(max_length=2, choices=schools, default="Na")
+  nationality = models.CharField(max_length=50, choices=nationalities, default="Za")
+  hostel = models.CharField(max_length=50, choices=hostels, default="Ka")
+  school = models.CharField(max_length=50, choices=schools, default="Na")
   program = models.CharField(max_length=100)
   year = models.CharField(max_length=5)
   owner = models.ForeignKey(User, default=None, on_delete=models.CASCADE)

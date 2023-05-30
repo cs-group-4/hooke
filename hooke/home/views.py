@@ -5,12 +5,11 @@ from chat.models import Inbox
 from .models import Interests, Notifications
 from django.contrib.auth import get_user_model
 
-
 # Create your views here.
 
 @login_required(login_url='/accounts/login/')
 def home_view(requests):
-    hookies = Profile.objects.all()
+    hookies = Profile.objects.exclude(owner=requests.user)
     interests = Interests.objects.filter(seeker=requests.user)
     # if interests.count() == 0:
     #     to_omit = []
@@ -27,7 +26,10 @@ def notifications_view(requests):
 @login_required(login_url='/accounts/login/')
 def profile_detail_view(requests, slug):
     profile = Profile.objects.get(owner=slug)
-    return render(requests, 'home/profile.html', {'hookie':profile})
+    hostels = Profile.hostels
+    schools = Profile.schools
+    return render(requests, 'home/profile.html', {'hookie':profile, 'hostels': hostels, 'schools': schools})
+
 
 @login_required(login_url='/accounts/login/')
 def interested_action(requests, slug):
@@ -44,6 +46,8 @@ def interested_action(requests, slug):
         # it should be a like back
          notification_entry.type = "like-back"
         # these two can now chat
+         inbox = Inbox(user1 = requests.user, user2 = seeked_id)
+         inbox.save()
     else:
         # its a like
         notification_entry.type = "like"
@@ -56,3 +60,16 @@ def interested_action(requests, slug):
     
     entry.save()
     return redirect('home:home_page')
+
+@login_required(login_url='/accounts/login/')
+def theme_swap_action(requests):
+    if requests.session['theme'] =="dark":
+        requests.session['theme'] = "light"
+    else:
+        requests.session['theme'] = "dark"
+    # if 'theme' in requests.session:
+    #     if requests.session['theme'] == "dark":
+            
+    #     else:
+    #         requests.session['theme'] = "dark"
+    return redirect(requests.META.get('HTTP_REFERER'))

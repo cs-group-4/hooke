@@ -4,6 +4,38 @@ html, body{
   margin: 0;
   padding: 0;
 }
+#screen #side-menu{
+  display: none;
+}
+@media (min-width: 700px){
+  .mobile-bottom-nav{
+    display: none !important;
+  }
+  #screen{
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: center;
+  }
+  #screen #side-menu{
+    flex-grow: 3;
+    display: block;
+    min-width: 16rem;
+    max-width: 16rem;
+  }
+  #screen #side-menu .card{
+    margin-left: 1rem;
+    border-radius: 20px;
+    padding: 1rem;
+    min-height: 20rem;
+  }
+  #screen #main-content{
+    flex-grow: 4;
+  }
+  #screen #space{
+    flex-grow: 1;
+  }
+}
 .unstyled{
   text-decoration: none;
 }
@@ -20,22 +52,31 @@ html, body{
 .instructions .fa-solid{
   margin-right: 0.5rem;
 }
-.card{
+
+.card-1{
   width: 80%;
-  min-height: 20rem;
+  /* min-height: 20rem; */
   left: 10%;
   text-align: center;
   border-radius: 20px;
   margin-bottom: 1rem;
 }
-.card h5{
+.card-1{
+  width: 80%;
+  /* min-height: 20rem; */
+  left: 10%;
+  text-align: center;
+  border-radius: 20px;
+  margin-bottom: 1rem;
+}
+.card-1 h5{
   margin-top: .5rem;
 }
-.card p{
+.card-1 p{
   margin-top: .5rem;
 }
 
-.card .image{
+.card-1 .image{
   width: 6rem;
   height: 6rem;
   background-position: center;

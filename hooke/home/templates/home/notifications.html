@@ -3,13 +3,12 @@
 {% block content %}
   <nav>
     <div class="px-2 py-2 primary-bg fixed-top" id="header">
-      <button class="btn on-surface-text"><i class="fa-solid fa-circle-user fa-lg"></i> Me</b>
-      <button class="btn on-surface-text" id="toggle-theme" style="float: right;"><i class="fa-solid fa-moon fa-lg"></i> Toggle theme</button>
+      <a href="javascript:history.go(-1)" class="btn on-surface-text"><i class="fa-solid fa-arrow-left fa-lg"></i> Notifications</a>
+      <button class="btn on-surface-text"  style="float: right;"><a class="unstyled" href="{% url 'home:theme-swap' %}"><i class="fa-solid fa-moon fa-lg"></i> Toggle theme</a></button>
     </div>
   </nav>
 
     <main>
-      <br>
         <!-- <section> -->
           <!-- <ul class="list instructions">
             <li class="list-item">
@@ -26,23 +25,30 @@
           </ul> -->
         <!-- </section> -->
         
-        <section class="main-section container">
-          {% for alert in notifications %}
-          
+        <section class="main-section container mt-5 pt-3">
          
-            <div class="card card-1 surface surface-border">
-              <div class="card-body">
-                <p>{{ alert.from_user.username }}
-                  {% if alert.type == "like" %}
-                    is interested in you
-                  {% else %}
-                    who you are interested in liked you back, you can now chat in messages
-                  {% endif %}
-                </p>
-                
-              </div>
+          <div class="card-1 surface" style="text-align:left;margin:0 auto;width:100%">
+            <div class="card-body p-5">
+              <h3 class="on-surface-heading">Notifications</h3>
+              <ul class="list-group surface list-group-flush">
+                {% for alert in notifications %}
+                <a href="{% url 'home:profile_page' slug=alert.from_user.id %}" class="list-group-item surface on-surface-heading">
+      
+                  <i class="fa-regular fa-heart"></i> 
+                      <span class="secondary-color" style="font-weight: 600;">{{ alert.from_user.username }}</span>
+                        {% if alert.type == "like" %}
+                          is interested in you
+                        {% else %}
+                          who you are interested in liked you back, you can now chat in messages
+                        {% endif %}
+                      </a>  
+                {% endfor %}
+              </ul>
             </div>
-          {% endfor %}
+            
+          </div>
+         
+
             
         </section>
         <br>

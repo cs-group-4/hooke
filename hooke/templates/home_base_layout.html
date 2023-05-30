@@ -1,4 +1,5 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,24 +17,52 @@
     <script src="{% static 'home/dashboard.js' %}"></script>
    
 </head>
-
+{% if request.session.theme == "dark" %}
+<body class="dark-theme" id="page">
+{% else %}
 <body class="light-theme" id="page">
-  {% block content %}
+{% endif %}
 
-  {% endblock %}
+  <div id="screen">
+    <section id="side-menu" class="pt-5">
+      <div class="card surface surface-border mt-3">
+        <nav class="nav flex-column">
+          <a class="nav-link active mobile-bottom-nav__item--active" href="{% url 'home:home_page' %}"><i class="fa-solid fa-home"></i> Home</a>
+          <a class="nav-link on-surface-text" href="{% url 'chats:chat' %}"><i class="fa-solid fa-message"></i>
+            Messages</a>
+          <a class="nav-link on-surface-text" href="{% url 'home:notifications' %}"><i class="fa-solid fa-bell"></i>
+            Notifications</a>
+        </nav>
+      </div>
+      
+    </section>
+    <section id="main-content">
+      {% block content %}
+
+      {% endblock %}
+    </section>
+    <section id="space"></div>
+  </div>
+ 
+  
   
   <nav class="mobile-bottom-nav surface">
+    
     <div class="mobile-bottom-nav__item mobile-bottom-nav__item--active">
+      <a class='unstyled' href="{% url 'home:home_page' %}">
       <div class="mobile-bottom-nav__item-content">
         <i class="fa-solid fa-home"></i>
         home
-      </div>		
+      </div>	
+    </a>	
     </div>
     <div class="mobile-bottom-nav__item">		
+      <a class='unstyled' href="{% url 'chats:chat' %}">
       <div class="mobile-bottom-nav__item-content on-surface-text">
         <i class="fa-solid fa-message"></i>
         Messages
       </div>
+    </a>
     </div>
     <div class="mobile-bottom-nav__item">
       <a class='unstyled' href="{% url 'home:notifications' %}">

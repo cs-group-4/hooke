@@ -7,7 +7,7 @@ body.dark-theme{
   background-color: #090909;
 }
 .dark-theme .surface{
-  background-color: #262626;
+  background-color: #262626 !important;
 }
 .dark-theme .on-surface-text{
   color: #ccc;
@@ -36,7 +36,7 @@ body.light-theme{
   background-color: #ffd3a5;
 }
 .light-theme .surface{
-  background-color: #ffeddb;
+  background-color: #ffeddb !important;;
 }
 .light-theme .on-surface-text{
   color: #735a41;
