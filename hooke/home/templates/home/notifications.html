@@ -1,0 +1,55 @@
+{% extends 'home_base_layout.html' %}
+
+{% block content %}
+  <nav>
+    <div class="px-2 py-2 primary-bg fixed-top" id="header">
+      <button class="btn on-surface-text"><i class="fa-solid fa-circle-user fa-lg"></i> Me</b>
+      <button class="btn on-surface-text" id="toggle-theme" style="float: right;"><i class="fa-solid fa-moon fa-lg"></i> Toggle theme</button>
+    </div>
+  </nav>
+
+    <main>
+      <br>
+        <!-- <section> -->
+          <!-- <ul class="list instructions">
+            <li class="list-item">
+              <i class="fa-solid fa-up-long" style="margin-right: 1.2rem;"></i>Swipe up to see next hookie
+              </li>
+            <li class="list-item">
+              <i class="fa-solid fa-left-long"></i>
+              Swipe left to message hookie
+            </li>
+            <li class="list-item">
+              <i class="fa-solid fa-right-long"></i>
+              Swipe swipe right to see profile
+            </li>
+          </ul> -->
+        <!-- </section> -->
+        
+        <section class="main-section container">
+          {% for alert in notifications %}
+          
+         
+            <div class="card card-1 surface surface-border">
+              <div class="card-body">
+                <p>{{ alert.from_user.username }}
+                  {% if alert.type == "like" %}
+                    is interested in you
+                  {% else %}
+                    who you are interested in liked you back, you can now chat in messages
+                  {% endif %}
+                </p>
+                
+              </div>
+            </div>
+          {% endfor %}
+            
+        </section>
+        <br>
+        <br>
+        <br>
+        <br>
+    </main>
+
+
+{% endblock  %}

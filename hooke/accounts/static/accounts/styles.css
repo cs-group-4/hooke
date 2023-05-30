@@ -43,7 +43,7 @@ h1 {
   background: url('heart-and-lips.png') no-repeat 50% -14%;
 }
 
-input {
+input, select {
   background-color: rgba(234,202,181,0.61) !important;
   border: 1px #b15e23 solid!important;
   width: 100%;

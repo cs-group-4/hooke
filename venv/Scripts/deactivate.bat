@@ -5,9 +5,9 @@ if defined _OLD_VIRTUAL_PROMPT (
 )
 set _OLD_VIRTUAL_PROMPT=
 
-if defined _OLD_VIRTUAL_PYTHONHOME (
-    set "PYTHONHOME=%_OLD_VIRTUAL_PYTHONHOME%"
-    set _OLD_VIRTUAL_PYTHONHOME=
+if defined _OLD_VIRTUAL_PYTHONhome (
+    set "PYTHONhome=%_OLD_VIRTUAL_PYTHONhome%"
+    set _OLD_VIRTUAL_PYTHONhome=
 )
 
 if defined _OLD_VIRTUAL_PATH (

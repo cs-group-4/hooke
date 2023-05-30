@@ -1,0 +1,14 @@
+{% extends 'base_accounts_layout.html' %}
+
+{% block content %}
+<h1>Hooke</h1>
+  <h3 class="card-title">Complete Profile</h3>
+    <form class="site-form" method="post" action="{% url 'accounts:create-profile' %}" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ form }}
+      
+      <p class="p-button mt-2">
+        <button class="btn" type="submit" value="Signup" style="--bs-primary: #772244;--bs-primary-rgb: 119,34,68;--bs-body-bg: #3c1d08;--bs-secondary: rgb(250,223,154);--bs-secondary-rgb: 250,223,154;background: #772244;">Signup</button>
+      </p>
+    </form>
+{% endblock  %}

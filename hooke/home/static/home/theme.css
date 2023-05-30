@@ -1,0 +1,61 @@
+/* Light theme */
+/* 
+
+background-color: #090909
+*/
+body.dark-theme{
+  background-color: #090909;
+}
+.dark-theme .surface{
+  background-color: #262626;
+}
+.dark-theme .on-surface-text{
+  color: #ccc;
+}
+.dark-theme .on-surface-heading{
+  color: #fff;
+}
+.dark-theme .primary-bg{
+  background-color: #734901;
+} 
+.dark-theme .primary-color{
+  color: #e6a12c;
+} 
+.dark-theme .secondary-color{
+  color: #ffa5ed;
+}
+.dark-theme .mobile-bottom-nav__item--active {
+  color: #e6a12c;
+}
+.dark-theme .surface-border{
+  border: 2px solid #373737;
+}
+
+/* dark mode */
+body.light-theme{
+  background-color: #ffd3a5;
+}
+.light-theme .surface{
+  background-color: #ffeddb;
+}
+.light-theme .on-surface-text{
+  color: #735a41;
+}
+.light-theme .on-surface-heading{
+  color: #403122;
+}
+.light-theme .primary-bg{
+  background-color: #e6a12c;
+} 
+.light-theme .primary-color{
+  color: #734901;
+} 
+.light-theme .secondary-color{
+  color: #d00da9;
+}
+.light-theme .mobile-bottom-nav__item--active {
+  color: #734901;
+}
+.light-theme .surface-border{
+  border: 2px solid #d0b191;
+}

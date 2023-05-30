@@ -8,10 +8,10 @@ deactivate () {
         export PATH
         unset _OLD_VIRTUAL_PATH
     fi
-    if [ -n "${_OLD_VIRTUAL_PYTHONHOME:-}" ] ; then
-        PYTHONHOME="${_OLD_VIRTUAL_PYTHONHOME:-}"
-        export PYTHONHOME
-        unset _OLD_VIRTUAL_PYTHONHOME
+    if [ -n "${_OLD_VIRTUAL_PYTHONhome:-}" ] ; then
+        PYTHONhome="${_OLD_VIRTUAL_PYTHONhome:-}"
+        export PYTHONhome
+        unset _OLD_VIRTUAL_PYTHONhome
     fi
 
     # This should detect bash and zsh, which have a hash command that must
@@ -45,12 +45,12 @@ _OLD_VIRTUAL_PATH="$PATH"
 PATH="$VIRTUAL_ENV/Scripts:$PATH"
 export PATH
 
-# unset PYTHONHOME if set
-# this will fail if PYTHONHOME is set to the empty string (which is bad anyway)
-# could use `if (set -u; : $PYTHONHOME) ;` in bash
-if [ -n "${PYTHONHOME:-}" ] ; then
-    _OLD_VIRTUAL_PYTHONHOME="${PYTHONHOME:-}"
-    unset PYTHONHOME
+# unset PYTHONhome if set
+# this will fail if PYTHONhome is set to the empty string (which is bad anyway)
+# could use `if (set -u; : $PYTHONhome) ;` in bash
+if [ -n "${PYTHONhome:-}" ] ; then
+    _OLD_VIRTUAL_PYTHONhome="${PYTHONhome:-}"
+    unset PYTHONhome
 fi
 
 if [ -z "${VIRTUAL_ENV_DISABLE_PROMPT:-}" ] ; then

@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <title>Messages</title>
+  <style>
+    html, body{
+      margin: 0;
+      padding: 0;
+      font-family: 'Roboto', sans-serif;
+      font-size: 62.5%;
+      background-color: #fff;
+      color: black;
+  }
+  header{
+      font-size: 5rem;
+      background-color: #9a4531 !important;
+  }
+  @media only screen and (min-width: 600px) {
+      header{
+          background-color: #ffff !important;
+          color: #252525 !important;
+          border-bottom: 1px solid #dadada;
+          /* box-shadow: 5px 5px 20px #a0a0a0; */
+      }
+  }
+  header .mdc-top-app-bar__title, .material-icons{
+      font-size: 2.5rem;
+  }
+  header .material-icons{
+      font-size: 3rem;
+  }
+  
+  main{
+      padding: 15rem 2rem;
+      background-color: #fbefe7;
+  
+      
+  }
+  main .message-wrapper{
+      margin: 2rem 0rem;
+      display: flex;
+      font-size: 2rem;
+  
+  }
+  main .message-container{
+      max-width: 28rem;
+      min-height: 3rem;
+      padding: 0.8rem;
+      border-radius: 10px;
+  }
+  main .message-wrapper.you{
+      justify-content: end;
+  }
+  main .message-wrapper.them{
+      justify-content: start;
+  }
+  main .message-wrapper.you .message-container{
+      background-color: #faa26c;
+      border: 0.5px solid #e69563;
+      color: #1d130c;
+  }
+  main .message-wrapper.them .message-container{
+      background-color: #fffdfe;
+      border: 0.5px solid #f0efef;
+  }
+  main .message-wrapper .message-container .time{
+      font-size: 1.3rem;
+      margin-top: 0.25rem;
+      font-weight: 100;
+  }
+  main .message-wrapper.you .message-container .time{
+      text-align: right;
+      color: #55370a;
+  }
+  main .message-wrapper.them .message-container .time{
+      text-align: right;
+      color: #444444;
+      
+  }
+  
+  main .message-wrapper.them .message-container .time .status{
+      display: none;
+      
+  }
+  
+  .chat-room{
+      display: flex;
+      font-size: 3rem;
+  
+  }
+  .chat-room .friends-section{
+      flex-grow: 1;
+      padding: 0rem 3rem;
+      border-right: 1px solid #dadada;
+      height: 100vh;
+      overflow-y: scroll;
+     
+  }
+  @media only screen and (max-width: 600px) {
+      .chat-room .friends-section{
+          display: none !important;
+      }
+  }
+  .mdc-list-item .mdc-list-item__primary-text{
+      font-size: 1.8rem;
+  }
+  .mdc-list a{
+    text-decoration: none;
+  }
+  .mdc-list-item{
+      margin: 1rem 0rem;
+  }
+  .mdc-list-item .mdc-list-item__secondary-text{
+      font-size: 1.5rem;
+  }
+  .chat-room .chat-section{
+      flex-grow: 3;
+      position: relative;
+      height: 100vh;
+      overflow-y: scroll;
+      
+  }
+  
+  .chat-room .friends-section .mdc-list-item__graphic img{
+      width: 5rem;
+      height: 5rem;
+      border-radius: 50px;
+      margin-right: 1.5rem;
+      border: 0.1rem solid #b5b5b5;
+  }
+  .chat-room .friends-section .mdc-list-item__text{
+      padding-top: 0.7rem;
+  }
+  @media only screen and (min-width: 600px) {
+      .mdc-top-app-bar__navigation-icon{
+          display: none !important;
+      }
+  }
+  
+  .bottom-div{
+      position: fixed;
+      width: 100%;
+      bottom: 0;
+      left: 0;
+      min-height: 6rem;
+      display: flex;
+      flex-direction: row;
+      background-color: #fafafc;
+  }
+  .bottom-div .bd{
+      flex-grow: 1;
+      padding: 0rem 3rem;
+      width: 225px;
+     
+  }
+  @media only screen and (max-width: 600px) {
+      .bottom-div .bd{
+          display: none;
+         
+      }
+  }
+  footer{
+      flex-grow: 2.74;
+      min-height: 6rem;
+      background-color: #fbefe7;
+      /* position: fixed; */
+      bottom: 0;
+      right: 0;
+      /* width: 80%; */
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      column-gap: 0.8rem;
+      padding: 1rem;
+      font-size: 3rem;
+  }
+  footer input{
+      min-height: 3rem;
+      max-height: 5rem;
+      width: 75%;
+      font-size: 2rem;
+      border-radius: 25px;
+      border: 2px solid #c7aa97;
+      background-color: #ffff;
+      padding: 0rem 2rem;
+  }
+  footer input:focus{
+      border: 2px solid #9a4531 !important;
+  }
+  footer div{
+      min-height: 3rem;
+      max-height: 5rem;
+      width: 20%;
+      line-height: 5rem;
+  }
+  footer div button.mdc-button{
+      font-size: 1.5rem !important;
+      background-color: #75bb4c !important;
+      border-radius: 25px;
+      min-height: 5rem;
+  }
+  footer div button.mdc-button .mdc-button__label{
+      color: #0b1207;
+  }
+  footer div button.mdc-button .mdc-button__icon{
+      color: #0b1207;
+      /* font-size: 1.4rem !important; */
+  }
+  
+  /* width */
+  ::-webkit-scrollbar {
+      width: 8px;
+    }
+    
+    /* Track */
+    ::-webkit-scrollbar-track {
+      box-shadow: inset 0 0 0px grey; 
+      border-radius: 10px;
+    }
+     
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+      background: #d1c8c2; 
+      border-radius: 3px;
+    }
+    
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+      background: #9a4531; 
+    }
+  
+
+  </style>
+</head>
+
+<body>
+  {% comment %} {% if request.user.is_authenticated %}
+  <center> Logout the chat Page <a href="/logout">Logout</a></center>
+  {% endif %} {% endcomment %}
+    <div class="chat-room">
+        <div class="friends-section">
+            <section>
+                <h3>Chat</h3>
+            </section>
+            <ul class="mdc-list mdc-list--two-line mdc-list-item--with-leading-avatar">
+                <li role="separator" class="mdc-list-divider"></li>
+                {%for user in users%}
+                <a href="{%url 'chats:chat' user.id%}">
+                <li class="mdc-list-item" tabindex="0">
+                    <span class="mdc-list-item__ripple"></span>
+                    <span class="mdc-list-item__graphic">
+                      <img class="avatar" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/i/166f59e9-66e4-4215-bf28-f772832d0922/dccjo0j-142d0303-126b-4f82-87ff-ad06768a764f.png" alt="">
+                    </span>
+  
+                    <span class="mdc-list-item__text">
+                      <span class="mdc-list-item__primary-text">{{user.username}}</span>
+                      <span class="mdc-list-item__secondary-text">Hello, long time</span>
+                    </span>
+                  </li>
+                  <li role="separator" class="mdc-list-divider"></li>
+                </a>
+                {%endfor%}
+            </ul>
+        </div>
+        <div class="chat-section">
+             <!-- Top app bar -->
+    <header class="mdc-top-app-bar">
+        <div class="mdc-top-app-bar__row">
+          <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+            <button class="material-icons mdc-top-app-bar__navigation-icon mdc-icon-button" aria-label="Open navigation menu">arrow_back</button>
+            <span class="mdc-top-app-bar__title">{{sending_to.username}}</span>
+          </section>
+          <!-- <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
+            <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Favorite">favorite</button>
+            <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Search">search</button>
+            <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Options">more_vert</button>
+          </section> -->
+        </div>
+    </header>
+    <main class="mdc-top-app-bar--fixed-adjust messages-section" id="messages-section">
+      <!-- messages -->
+      {%for msg in messages%}
+        {%if msg.sender == request.user%}
+          <div class="message-wrapper you">
+        {%else%}
+          <div class="message-wrapper them">
+        {%endif%}
+        <div class="message-container">
+          <div class="message">{{msg.content}}</div>
+          <div class="time">
+            <span>{{msg.timestamp}}</span>
+            <span class="status"> | Seen</span>
+          </div>
+        </div>
+        
+      </div>
+    {%endfor%}
+  </div>
+    </main>
+    
+        </div>
+    </div>
+   <div class="bottom-div">
+    <div class="bd">
+      {{request.user}}
+    </div>
+    <footer>
+        <input type="text" required name="message" placeholder="Messsage..." id="id_message_send_input">
+        <div>
+            <button class="mdc-button mdc-button--unelevated mdc-button--trailing" type="submit" id="id_message_send_button">
+                <span class="mdc-button__ripple"></span>
+                <span class="mdc-button__label">Send</span>
+    
+                <i class="material-icons mdc--raised mdc-button__icon" aria-hidden="true"
+                  >send</i
+                >
+              </button>
+        </div>
+      
+    </footer>
+   </div>
+  <script defer>
+    // for scrolling to the bottom
+    
+    function scrollToBottom() {
+      console.log("working");
+      document.querySelector("body").scroll({ top: document.querySelector("body").scrollHeight, behavior: 'smooth' });
+    }
+    const chatSocket = new WebSocket("ws://" + window.location.host + "/ws/chat/{{inbox.id}}");
+    chatSocket.onopen = function (e) {
+      console.log("The connection was setup successfully !");
+    };
+    chatSocket.onclose = function (e) {
+      console.log("Something unexpected happened !");
+    };
+    document.querySelector("#id_message_send_input").focus();
+    document.querySelector("#id_message_send_input").onkeyup = function (e) {
+      if (e.keyCode == 13) {
+        document.querySelector("#id_message_send_button").click();
+      }
+    };
+    document.querySelector("#id_message_send_button").onclick = function (e) {
+      // for scrolling to the bottom
+      scrollToBottom();
+      var messageInput = document.querySelector(
+        "#id_message_send_input"
+      ).value;
+      if(messageInput == ""){ // dont' send of form is empty
+        return;
+      } else{
+        chatSocket.send(JSON.stringify({ message: messageInput, 
+          username: "{{request.user.username}}",
+          inbox: "{{inbox.id}}",
+          reciever:"{{sending_to.id}}",
+          user: "{{request.user.id}}"}));
+      }
+      
+    };
+    chatSocket.onmessage = function (e) {
+      
+      const data = JSON.parse(e.data);
+      if(!data.username){ // dont show anything if there is no message
+        return;
+      }
+      console.log('Data', data);
+      var container = document.getElementById("messages-section");
+      
+      var div = document.createElement("div");
+      div.classList.add("message-wrapper");
+      if('{{request.user.username}}' == data.username)
+      {
+        div.classList.add("you");
+      }else{
+        div.classList.add("them")
+      }
+      div.innerHTML = `<div class="message-container">
+            <div class="message">
+            ${data.message}    
+            </div>
+            <div class="time">
+                <span>Now</span>
+                <span class="status"> | Seen</span>
+            </div>
+        </div>`;
+      
+      container.appendChild(div)
+      document.querySelector("#id_message_send_input").value = "";
+      document.querySelector("#messages-section").appendChild(div);
+      
+    };
+  </script>
+</body>
+
+</html>
