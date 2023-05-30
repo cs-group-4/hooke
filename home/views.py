@@ -63,9 +63,12 @@ def interested_action(requests, slug):
 
 @login_required(login_url='/accounts/login/')
 def theme_swap_action(requests):
-    if requests.session['theme'] =="dark":
-        requests.session['theme'] = "light"
-    else:
+    try:
+        if requests.session['theme'] =="dark":
+            requests.session['theme'] = "light"
+        else:
+            requests.session['theme'] = "dark"
+    except:
         requests.session['theme'] = "dark"
     # if 'theme' in requests.session:
     #     if requests.session['theme'] == "dark":
